@@ -1,4 +1,4 @@
-export function card({
+export function Card({
   title,
   children,
 }: {

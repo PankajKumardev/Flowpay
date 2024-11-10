@@ -24,6 +24,7 @@ export default function Layout({
           />
         </div>
       </div>
+      {children}
     </div>
   );
 }
