@@ -1,0 +1,19 @@
+{
+  "name": "bank-webhook",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@repo/db": "*",
+    "@types/express": "^5.0.0",
+    "esbuild": "^0.24.0",
+    "express": "^4.21.1",
+    "zod": "^3.23.8"
+  }
+}
