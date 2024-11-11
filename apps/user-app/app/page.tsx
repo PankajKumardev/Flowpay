@@ -1,11 +1,12 @@
-"use client"
-import { signIn, signOut, useSession } from "next-auth/react";
-import { AppbarClient } from "../AppbarClient";
+import { getServerSession } from "next-auth";
+import { redirect } from "next/navigation";
+import { authOptions } from "./lib/auth";
 
-export default function Page(): JSX.Element {
-  const session = useSession();
-  return (
-   <div>
-   </div>
-  );
+export default async function Page() {
+  const sesson = await getServerSession(authOptions);
+  if (sesson?.user) {
+    redirect("/dashboard");
+  } else {
+    redirect("/api/auth/signin");
+  }
 }
