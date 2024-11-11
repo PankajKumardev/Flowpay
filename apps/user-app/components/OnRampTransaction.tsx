@@ -4,10 +4,10 @@ export const OnRampTransaction = ({
     transactions,
 }: {
   transactions: {
-    time: Date;
-    amount: number;
-    status: string;
-    provider: string;
+    time: Date,
+    amount: number,
+    status: string,
+    provider: string
   }[];
 }) => {
   if (!transactions.length) {
