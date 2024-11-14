@@ -4,9 +4,9 @@ import { z } from "zod";
 
 const Port = process.env.PORT || 3003;
 const app = express();
-
+app.use(express.json());
 const TranscationSchema = z.object({
-  userId: z.string(),
+  user_identifier: z.string(),
   amount: z.number(),
   token: z.string(),
 });
