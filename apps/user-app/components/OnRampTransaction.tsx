@@ -1,13 +1,13 @@
 import { Card } from "@repo/ui/card";
 
 export const OnRampTransaction = ({
-    transactions,
+  transactions,
 }: {
   transactions: {
-    time: Date,
-    amount: number,
-    status: string,
-    provider: string
+    time: Date;
+    amount: number;
+    status: string;
+    provider: string;
   }[];
 }) => {
   if (!transactions.length) {
@@ -19,21 +19,21 @@ export const OnRampTransaction = ({
   }
   return (
     <Card title="Recent Transcation">
-     <div className="pt-2">
-            {transactions.map((t, index) => <div key={index} className="flex justify-between">
-                <div>
-                    <div className="text-sm">
-                        Received INR
-                    </div>
-                    <div className="text-slate-600 text-xs">
-                        {t.time.toDateString()}
-                    </div>
-                </div>
-                <div className="flex flex-col justify-center">
-                    + Rs {t.amount / 100}
-                </div>
-            </div>)}
-        </div>
+      <div className="pt-2">
+        {transactions.map((t, index) => (
+          <div key={index} className="flex justify-between">
+            <div>
+              <div className="text-sm">Received INR</div>
+              <div className="text-slate-600 text-xs">
+                {t.time.toDateString()}
+              </div>
+            </div>
+            <div className="flex flex-col justify-center">
+              + Rs {t.amount / 100}
+            </div>
+          </div>
+        ))}
+      </div>
     </Card>
   );
 };

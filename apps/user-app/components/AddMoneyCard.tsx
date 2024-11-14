@@ -5,6 +5,7 @@ import { Card } from "@repo/ui/card";
 import { Textinput } from "@repo/ui/textinput";
 import { Select } from "@repo/ui/select";
 import { Button } from "@repo/ui/button";
+import { createOnRamptxn } from "../app/lib/actions/createOnRampTxn";
 const SUPPORTED_BANKS = [
   {
     name: "HDFC Bank",
@@ -17,7 +18,8 @@ const SUPPORTED_BANKS = [
 ];
 
 export const AddMoney = () => {
-  const [value, setValue] = useState(0)
+  const [value, setValue] = useState(0);
+  const [provider, setProvider] = useState(SUPPORTED_BANKS[0]?.name || "");
   const [redirectUrl, setRedirectUrl] = useState(
     SUPPORTED_BANKS[0]?.redirectUrl,
   );
@@ -34,6 +36,9 @@ export const AddMoney = () => {
         <div className="py-4 text-left">Bank</div>
         <Select
           onSelect={(value) => {
+            setProvider(
+              SUPPORTED_BANKS.find((x) => x.name === value)?.name || "",
+            );
             setRedirectUrl(
               SUPPORTED_BANKS.find((x) => x.name === value)?.redirectUrl || "",
             );
@@ -45,8 +50,8 @@ export const AddMoney = () => {
         />
         <div className="flex justify-center pt-4">
           <Button
-            onClick={() => {
-              window.location.href = redirectUrl || "";
+            onClick={async () => {
+              await createOnRamptxn(value * 100, provider);
             }}
           >
             Add Money
