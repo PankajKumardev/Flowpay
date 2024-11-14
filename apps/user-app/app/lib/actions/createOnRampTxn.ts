@@ -11,6 +11,7 @@ export async function createOnRamptxn(amount: number, provider: string) {
   if (!userId) {
     return {
       message: "User not logged in",
+      
     };
   }
   await prisma.onRampTransaction.create({
