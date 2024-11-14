@@ -17,7 +17,7 @@ export const authOptions = {
           type: "text",
           placeholder: "1231231231",
           required: true,
-        }, 
+        },
         password: { label: "Password", type: "password", required: true },
       },
 
@@ -82,7 +82,7 @@ export const authOptions = {
     // TODO: can u fix the type here? Using any is bad
     async session({ session, token }: any) {
       // Assuming `sub` is the user ID stored in the token
-      session.user.id = token.sub;  
+      session.user.id = token.sub;
       return session;
     },
   },

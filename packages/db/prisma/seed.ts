@@ -1,51 +1,58 @@
 import { PrismaClient } from "@prisma/client";
+import bcrypt from "bcrypt";
 const prisma = new PrismaClient();
 
 async function main() {
   const alice = await prisma.user.upsert({
-    where: {
-      number: "1234567890",
-    },
+    where: { number: "1111111111" },
     update: {},
     create: {
-      number: "1234567890",
-      password: "password",
-      name: "Alice",
+      number: "1111111111",
+      password: await bcrypt.hash("alice", 10),
+      name: "alice",
+      Balance: {
+        create: {
+          amount: 20000,
+          locked: 0,
+        },
+      },
       OnRampTransaction: {
         create: {
           startTime: new Date(),
           status: "Completed",
           amount: 20000,
-          token: "122",
+          token: "token__1",
           provider: "HDFC Bank",
         },
       },
     },
   });
-
   const bob = await prisma.user.upsert({
-    where: {
-      number: "9876543210",
-    },
+    where: { number: "2222222222" },
     update: {},
     create: {
-      number: "9876543210",
-      password: "password",
-      name: "Bob",
+      number: "2222222222",
+      password: await bcrypt.hash("bob", 10),
+      name: "bob",
+      Balance: {
+        create: {
+          amount: 2000,
+          locked: 0,
+        },
+      },
       OnRampTransaction: {
         create: {
           startTime: new Date(),
           status: "Failed",
-          amount: 20000,
-          token: "123",
-          provider: "ICICI Bank",
+          amount: 2000,
+          token: "token__2",
+          provider: "HDFC Bank",
         },
       },
     },
   });
   console.log({ alice, bob });
 }
-
 main()
   .then(async () => {
     await prisma.$disconnect();

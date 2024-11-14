@@ -18,9 +18,9 @@ export const Appbar = ({ user, onSignin, onSignout }: AppbarProps) => {
     console.log('redirecting to home page');
   }
   return (
-    <div className="flex justify-between border-b px-4">
-    <div className="text-xl flex flex-col justify-center">
-        <div className="font-semibold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent cursor-pointer"  onClick={handleRedirect}>
+    <div className="flex justify-between border-b px-4 ">
+    <div className="text-[20px] flex flex-col justify-center">
+        <div className="font-semibold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent cursor-pointer" onClick={handleRedirect}>
        Flowpay
         </div>
       </div>
