@@ -37,8 +37,8 @@ export default async function () {
   const balance = await getBalance();
   const transactions = await getOnRampTransactions();
   return (
-    <div className="w-screen">
-      <div className="text-3xl pt-8 mb-8 font-bold text-indigo-600">
+    <div className="w-screen mt-2">
+      <div className="text-3xl pt-8 mb-8 font-extrabold text-indigo-600">
         Transfer
       </div>
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2 pt-4">
