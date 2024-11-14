@@ -7,8 +7,8 @@ export default function Layout({
   children: React.ReactNode;
 }): JSX.Element {
   return (
-    <div className="flex pt-14">
-      <div className="w-72 border-r border-slate-300 min-h-screen mr-4 pt-28 ">
+    <div className="flex pt-14 bg-slate-100 overflow-hidden">
+      <div className=" w-44 md:w-60 border-r border-slate-300 min-h-screen mr-4 pt-28 ]">
         <div>
           <SidebarItem href={"/dashboard"} title="Home" icon={<HomeIcon />} />
 

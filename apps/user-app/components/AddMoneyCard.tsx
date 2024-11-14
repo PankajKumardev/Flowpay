@@ -17,6 +17,7 @@ const SUPPORTED_BANKS = [
 ];
 
 export const AddMoney = () => {
+  const [value, setValue] = useState(0)
   const [redirectUrl, setRedirectUrl] = useState(
     SUPPORTED_BANKS[0]?.redirectUrl,
   );
@@ -26,7 +27,9 @@ export const AddMoney = () => {
         <Textinput
           label={"Amount"}
           placeholder={"Amount"}
-          onChange={(e) => {}}
+          onChange={(val) => {
+            setValue(Number(val));
+          }}
         />
         <div className="py-4 text-left">Bank</div>
         <Select
