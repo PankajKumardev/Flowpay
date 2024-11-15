@@ -24,7 +24,7 @@ export default function Layout({
           />
         </div>
       </div>
-      {children}
+      <div className="flex-1 pb-10">{children}</div>
     </div>
   );
 }

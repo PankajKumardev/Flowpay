@@ -1,6 +1,7 @@
 import GoogleProvider from "next-auth/providers/google";
 import db from "@repo/db/client";
 
+
 export const authOptions = {
     providers: [
         GoogleProvider({
@@ -9,7 +10,7 @@ export const authOptions = {
         })
     ],
     callbacks: {
-      async signIn({ user, account }: {
+      async signIn({ user , account  }: {
         user: {
           email: string;
           name: string
