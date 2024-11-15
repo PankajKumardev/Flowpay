@@ -1,6 +1,5 @@
 import { SidebarItem } from "../../components/SiderBarItem";
 
-
 export default function Layout({
   children,
 }: {
@@ -8,8 +7,8 @@ export default function Layout({
 }): JSX.Element {
   return (
     <div className="flex pt-14 bg-slate-100 overflow-hidden">
-      <div className=" w-44 md:w-60 border-r border-slate-300 min-h-screen mr-4 pt-28 ]">
-        <div>
+      <div className=" w-32 md:w-60 border-r border-slate-300 min-h-screen pt-28 md:mr-8 mr-4 ]">
+        <div className="flex flex-col gap-4">
           <SidebarItem href={"/dashboard"} title="Home" icon={<HomeIcon />} />
 
           <SidebarItem
@@ -21,6 +20,12 @@ export default function Layout({
             href={"/transactions"}
             title="Transactions"
             icon={<TransactionsIcon />}
+          />
+
+          <SidebarItem
+            href={"/p2p"}
+            title="P2P Transfer"
+            icon={<P2PIcon />}
           />
         </div>
       </div>
@@ -37,7 +42,7 @@ function HomeIcon() {
       viewBox="0 0 24 24"
       strokeWidth="1.5"
       stroke="currentColor"
-      className="w-6 h-6"
+      className="w-4 h-4 md:w-6 md:h-6"
     >
       <path
         strokeLinecap="round"
@@ -55,7 +60,7 @@ function TransferIcon() {
       viewBox="0 0 24 24"
       strokeWidth="1.5"
       stroke="currentColor"
-      className="w-6 h-6"
+      className="w-4 h-4 md:w-6 md:h-6"
     >
       <path
         strokeLinecap="round"
@@ -74,12 +79,31 @@ function TransactionsIcon() {
       viewBox="0 0 24 24"
       strokeWidth="1.5"
       stroke="currentColor"
-      className="w-6 h-6"
+      className="w-4 h-4 md:w-6 md:h-6"
     >
       <path
         strokeLinecap="round"
         strokeLinejoin="round"
         d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+      />
+    </svg>
+  );
+}
+
+function P2PIcon() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      strokeWidth="1.5"
+      stroke="currentColor"
+     className="w-4 h-4 md:w-6 md:h-6"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="m4.5 19.5 15-15m0 0H8.25m11.25 0v11.25"
       />
     </svg>
   );

@@ -17,14 +17,14 @@ export const SidebarItem = ({
 
   return (
     <div
-      className={`flex ${selected ? "text-indigo-500" : "text-slate-500"} cursor-pointer  p-2 md:pl-8 pl-6  w-svw`}
+      className={`flex ${selected ? "text-indigo-500" : "text-slate-500"} cursor-pointer  p-2 md:pl-8   w-svw`}
       onClick={() => {
         router.push(href);
       }}
     >
-      <div className="pr-2">{icon}</div>
+      <div className="pr-1 md:pr-2">{icon}</div>
       <div
-        className={`md:font-bold ${selected ? "text-indigo-500" : "text-slate-500"} font-semibold`}
+        className={`md:font-bold ${selected ? "text-indigo-500" : "text-slate-500"} font-semibold text-sm `}
       >
         {title}
       </div>
