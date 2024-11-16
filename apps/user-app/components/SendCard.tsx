@@ -5,6 +5,7 @@ import { Center } from "@repo/ui/center";
 import { Textinput } from "@repo/ui/textinput";
 import { useState } from "react";
 import { p2pTransfer } from "../app/lib/actions/P2Ptransfer";
+
 export function SendCard() {
   const [number, setNumber] = useState("");
   const [amount, setAmount] = useState("");
