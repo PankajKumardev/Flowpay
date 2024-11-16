@@ -59,7 +59,5 @@ export const AddMoney = () => {
         </div>
       </div>
     </Card>
-
-
   );
 };
