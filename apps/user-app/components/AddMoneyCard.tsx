@@ -53,8 +53,7 @@ export const AddMoney = () => {
             onClick={async () => {
               await createOnRamptxn(value * 100, provider);
             }}
-          >
-            
+          >            
             Add Money
           </Button>
         </div>
