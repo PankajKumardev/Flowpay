@@ -8,39 +8,51 @@ datasource db {
 }
 
 model User {
-  id          Int      @id @default(autoincrement())
-  email       String?  @unique
-  name        String? 
-  number      String  @unique
-  password    String
+  id                Int                 @id @default(autoincrement())
+  email             String?             @unique
+  name              String?
+  number            String              @unique
+  password          String
   OnRampTransaction OnRampTransaction[]
   Balance           Balance[]
+  receivedTransfer  p2pTransfer[]       @relation(name: "FromUserRelation")
+  sentTransfer      p2pTransfer[]       @relation(name: "ToUserRelation")
+}
+
+model p2pTransfer {
+  id         Int      @id @default(autoincrement())
+  amount     Int
+  timestamp  DateTime
+  fromUserId Int
+  fromUser   User     @relation(name: "FromUserRelation", fields: [fromUserId], references: [id])
+  toUserId   Int
+  toUser     User     @relation(name: "ToUserRelation", fields: [toUserId], references: [id])
 }
 
 model Merchant {
-  id          Int     @id @default(autoincrement())
-  email       String  @unique
-  name        String?
-  auth_type   AuthType   
+  id        Int      @id @default(autoincrement())
+  email     String   @unique
+  name      String?
+  auth_type AuthType
 }
 
 model OnRampTransaction {
-  id  Int @id @default(autoincrement())
-  status OnRampStatus
-  token  String @unique
-  provider String
-  amount Int
+  id        Int          @id @default(autoincrement())
+  status    OnRampStatus
+  token     String       @unique
+  provider  String
+  amount    Int
   startTime DateTime
-  userId Int
-  user User @relation(fields : [userId], references: [id])
+  userId    Int
+  user      User         @relation(fields: [userId], references: [id])
 }
 
 model Balance {
-  id  Int  @id  @default(autoincrement())
+  id     Int  @id @default(autoincrement())
   userId Int  @unique
-  amount Int 
+  amount Int
   locked Int
-  user User @relation(fields : [userId], references: [id])
+  user   User @relation(fields: [userId], references: [id])
 }
 
 enum OnRampStatus {

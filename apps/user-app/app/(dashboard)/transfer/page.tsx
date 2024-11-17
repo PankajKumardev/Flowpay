@@ -38,7 +38,7 @@ export default async function () {
   const transactions = await getOnRampTransactions();
   return (
     <div className="w-full mt-2 ">
-      <div className="text-3xl pt-8 mb-4 font-extrabold text-indigo-600 flex justify-center ">
+      <div className="text-3xl pt-8 mb-4 font-bold text-indigo-600 flex justify-center ">
         Transfer
       </div>
       <div className=" gap-4 md:grid-cols-2 pt-4  md:px-28">
