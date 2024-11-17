@@ -12,7 +12,7 @@ async function getsentP2PTranscations() {
   });
 
   return txns.map((t: any) => ({
-    time: t.timestamp ,
+    time: t.timestamp,
     amount: t.amount,
     status: "Completed",
     provider: t.provider,
@@ -28,10 +28,10 @@ async function getreceivedP2PTranscations() {
   });
 
   return txns.map((t: any) => ({
-    time: t.timestamp ,
+    time: t.timestamp,
     amount: t.amount,
     status: "Completed",
-    provider: t.provider, 
+    provider: t.provider,
   }));
 }
 
@@ -52,7 +52,13 @@ async function getOnRampTransactions(status: any) {
 }
 
 export default async function TransactionsPage() {
-  const [sentP2PTranscations, receivedP2PTranscations, onRampTransactions, onRampTransactionsPending, onRampTransactionsFailed] = await Promise.all([
+  const [
+    sentP2PTranscations,
+    receivedP2PTranscations,
+    onRampTransactions,
+    onRampTransactionsPending,
+    onRampTransactionsFailed,
+  ] = await Promise.all([
     getsentP2PTranscations(),
     getreceivedP2PTranscations(),
     getOnRampTransactions("Completed"),
@@ -61,57 +67,54 @@ export default async function TransactionsPage() {
   ]);
 
   return (
-    <div>
-      <div className="pl-4 pt-14">
-        <div className="flex flex-col gap-5">
-          <div className="flex justify-center">
-          <h1 className="text-4xl text-indigo-600 pt-8 mb-8 font-bold justify-center ">
+    <div className="pl-4 pt-10">
+      <div className="flex flex-col gap-5">
+        <div className="flex justify-center">
+          <h1 className="text-4xl text-violet-600 pt-8 mb-8 font-bold">
             Transactions
           </h1>
-
-          </div>
-          <div className="w-[80vw] grid grid-cols-1 md:grid-cols-2 px-10 gap-3">
-            <h1 className="text-2xl text-violet-500 pt-2 font-bold col-span-2">
-              P2P Transactions
-            </h1>
-            <div>
-              <OnRampTransaction
-                title={"Sent transactions"}
-                transactions={sentP2PTranscations}
-              />
-            </div>
-            <div>
-              <OnRampTransaction
-                title={"Received transactions"}
-                transactions={receivedP2PTranscations}
-              />
-            </div>
-          </div>
-
-          <div className="w-[80vw] grid grid-cols-1 md:grid-cols-2 px-10 gap-3">
-            <h1 className="text-2xl text-violet-500 pt-2 font-bold col-span-2">
-              Wallet Transactions
-            </h1>
-            <div>
-              <OnRampTransaction
-                title={"Successful transactions"}
-                transactions={onRampTransactions}
-              />
-            </div>
-
-            <div>
-              <OnRampTransaction
-                title={"Processing Transactions"}
-                transactions={onRampTransactionsPending}
-              />
-            </div>
-
-            <div>
+        </div>
+        <div className="w-full grid grid-cols-1 md:grid-cols-2 px-4 md:px-10 gap-3">
+          <h1 className="text-2xl text-violet-500 pt-2 font-bold col-span-1 md:col-span-2">
+            P2P Transactions
+          </h1>
+          <div>
             <OnRampTransaction
-            title={"Failed transactions"}
-            transactions={onRampTransactionsFailed}
+              title={"Sent transactions"}
+              transactions={sentP2PTranscations}
             />
-            </div>
+          </div>
+          <div>
+            <OnRampTransaction
+              title={"Received transactions"}
+              transactions={receivedP2PTranscations}
+            />
+          </div>
+        </div>
+
+        <div className="w-full grid grid-cols-1 md:grid-cols-2 px-4 md:px-10 gap-3">
+          <h1 className="text-2xl text-violet-500 pt-2 font-bold col-span-1 md:col-span-2">
+            Wallet Transactions
+          </h1>
+          <div>
+            <OnRampTransaction
+              title={"Successful transactions"}
+              transactions={onRampTransactions}
+            />
+          </div>
+
+          <div>
+            <OnRampTransaction
+              title={"Processing Transactions"}
+              transactions={onRampTransactionsPending}
+            />
+          </div>
+
+          <div>
+            <OnRampTransaction
+              title={"Failure Transactions"}
+              transactions={onRampTransactionsFailed}
+            />
           </div>
         </div>
       </div>
