@@ -1,4 +1,3 @@
-// /app/api/numbers/route.ts (Next.js 13+ using new API routes)
 import prisma from '@repo/db/client';
 import { NextResponse } from 'next/server';
 

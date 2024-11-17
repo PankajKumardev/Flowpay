@@ -24,6 +24,7 @@ export function NumberList({ number, onSelect }: NumberListProps) {
     }
   };
 
+//debounce the input to avoid multiple requests
   useEffect(() => {
     if (number.length > 0) {
       const timer = setTimeout(() => {
@@ -44,7 +45,7 @@ export function NumberList({ number, onSelect }: NumberListProps) {
     <div className="relative">
       {loading && <p>Loading...</p>}
       {filteredNumbers.length > 0 && (
-        <ul className="absolute bg-white border border-gray-300 w-full rounded-lg shadow-lg mt-1 z-10">
+        <ul className="absolute bg-white border border-gray-300 w-full rounded-lg shadow-lg mt-1 z-10  text-sm">
           {filteredNumbers.map((numObj) => (
             <li
               key={numObj.number}
