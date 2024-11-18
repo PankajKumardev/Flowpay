@@ -1,10 +1,17 @@
+import { getServerSession } from "next-auth";
 import { SidebarItem } from "../../components/SiderBarItem";
+import { authOptions } from "../lib/auth";
+import { redirect } from "next/navigation";
 
-export default function Layout({
+export default async function Layout({
   children,
 }: {
   children: React.ReactNode;
-}): JSX.Element {
+}): Promise<JSX.Element> {
+  const session = await getServerSession(authOptions);
+  if (!session?.user) {
+    redirect("/home");
+  }
   return (
     <div className="flex pt-14 bg-slate-100 overflow-hidden">
       <div className=" w-32 md:w-60 border-r border-slate-300 min-h-screen pt-28 md:mr-8 mr-4 ]">
@@ -22,11 +29,7 @@ export default function Layout({
             icon={<TransactionsIcon />}
           />
 
-          <SidebarItem
-            href={"/p2p"}
-            title="P2P Transfer"
-            icon={<P2PIcon />}
-          />
+          <SidebarItem href={"/p2p"} title="P2P Transfer" icon={<P2PIcon />} />
         </div>
       </div>
       <div className="flex-1 pb-10">{children}</div>
@@ -98,7 +101,7 @@ function P2PIcon() {
       viewBox="0 0 24 24"
       strokeWidth="1.5"
       stroke="currentColor"
-     className="w-4 h-4 md:w-6 md:h-6"
+      className="w-4 h-4 md:w-6 md:h-6"
     >
       <path
         strokeLinecap="round"
