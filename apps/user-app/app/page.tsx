@@ -7,6 +7,6 @@ export default async function Page() {
   if (sesson?.user) {
     redirect("/dashboard");
   } else {
-    redirect("/api/auth/signin");
+    redirect("/home");
   }
 }
