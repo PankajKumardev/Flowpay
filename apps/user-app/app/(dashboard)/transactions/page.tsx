@@ -69,10 +69,13 @@ export default async function TransactionsPage() {
   return (
     <div className="pl-4 pt-20 pb-4">
       <div className="flex flex-col gap-5">
-        <div className="flex justify-center ">
+        <div className="text-center mb-12">
           <h1 className="text-4xl font-extrabold text-slate-800">
             <span className="text-blue-600">FlowPay </span>Transactions
           </h1>
+          <p className="mt-2 text-xl text-slate-800">
+            Track all your transactions effortlessly
+          </p>
         </div>
         <div className="w-full grid grid-cols-1 md:grid-cols-2 px-4 md:px-10 gap-3">
           <h1 className="text-2xl text-slate-800 pt-2 font-bold col-span-1 md:col-span-2">
