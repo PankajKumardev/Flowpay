@@ -35,10 +35,10 @@ export function SendCard() {
   };
 
   return (
-    <div className="h-full mt-20">
+    <div className="h-full mt-10 ">
       <Center>
         <Card title="Send Money">
-          <div className="min-w-72 pt-2">
+          <div className="min-w-80 pt-2">
             <div className="pt-2">
               <label className="block mb-2 text-sm font-medium text-gray-900">
                 Number

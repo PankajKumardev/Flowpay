@@ -67,16 +67,16 @@ export default async function TransactionsPage() {
   ]);
 
   return (
-    <div className="pl-4 pt-10">
+    <div className="pl-4 pt-20 pb-4">
       <div className="flex flex-col gap-5">
-        <div className="flex justify-center">
-          <h1 className="text-4xl text-violet-600 pt-8 mb-8 font-bold">
-            Transactions
+        <div className="flex justify-center ">
+          <h1 className="text-4xl font-extrabold text-slate-800">
+            <span className="text-blue-600">FlowPay </span>Transactions
           </h1>
         </div>
         <div className="w-full grid grid-cols-1 md:grid-cols-2 px-4 md:px-10 gap-3">
-          <h1 className="text-2xl text-violet-500 pt-2 font-bold col-span-1 md:col-span-2">
-            P2P Transactions
+          <h1 className="text-2xl text-slate-800 pt-2 font-bold col-span-1 md:col-span-2">
+            <span className="text-blue-600">P2P </span>Transactions
           </h1>
           <div>
             <OnRampTransaction
@@ -93,8 +93,8 @@ export default async function TransactionsPage() {
         </div>
 
         <div className="w-full grid grid-cols-1 md:grid-cols-2 px-4 md:px-10 gap-3">
-          <h1 className="text-2xl text-violet-500 pt-2 font-bold col-span-1 md:col-span-2">
-            Wallet Transactions
+          <h1 className="text-2xl text-slate-800 pt-2 font-bold col-span-1 md:col-span-2">
+            <span className="text-blue-600">Wallet </span>Transactions
           </h1>
           <div>
             <OnRampTransaction

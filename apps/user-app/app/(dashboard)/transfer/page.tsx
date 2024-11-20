@@ -6,7 +6,7 @@ import { BalanceCard } from "../../../components/BalanceCard";
 import { OnRampTransaction } from "../../../components/OnRampTransaction";
 
 async function getBalance() {
-  const session = await getServerSession(authOptions);
+  const session = await getServerSession(await authOptions);
   const balance = await prisma.balance.findFirst({
     where: {
       userId: Number(session?.user?.id),
@@ -37,9 +37,11 @@ export default async function () {
   const balance = await getBalance();
   const transactions = await getOnRampTransactions();
   return (
-    <div className="w-full mt-2 ">
-      <div className="text-4xl pt-8 mb-4 font-bold text-violet-600 flex justify-center ">
-        Transfer
+    <div className="w-full mt-4 ">
+      <div className="text-4xl pt-8 mb-8 font-bold text-violet-600 flex justify-center ">
+      <h1 className="text-4xl font-extrabold text-slate-800">
+        <span className="text-blue-600">FlowPay </span>Transfer
+      </h1>
       </div>
       <div className=" gap-4 md:grid-cols-2 pt-4  md:px-28">
         <div>

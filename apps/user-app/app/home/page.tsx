@@ -1,4 +1,3 @@
-
 import React from "react";
 import Link from "next/link";
 import { redirect } from "next/navigation";
@@ -15,6 +14,10 @@ import { authOptions } from "../lib/auth";
 import { getServerSession } from "next-auth";
 
 export default async function HeroSection() {
+  const sesson = await getServerSession(authOptions);
+  if (sesson?.user) {
+    redirect("/dashboard");
+  }
   return (
     <div className="relative overflow-hidden bg-gradient-to-br from-blue-50 to-indigo-100 pt-10 ">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
