@@ -13,6 +13,7 @@
     "@repo/store": "*",
     "@repo/ui": "*",
     "@types/bcrypt": "^5.0.2",
+    "axios": "^1.7.7",
     "bcrypt": "^5.1.1",
     "lucide-react": "^0.460.0",
     "next": "^15.0.3",

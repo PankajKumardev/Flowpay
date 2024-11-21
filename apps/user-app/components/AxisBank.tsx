@@ -14,7 +14,6 @@ export default function AxisTransactionPage() {
   const transactionProcessed = useRef(false);
 
   useEffect(() => {
-
     const processTransaction = async () => {
       if (transactionProcessed.current) return;
       transactionProcessed.current = true;
@@ -23,7 +22,7 @@ export default function AxisTransactionPage() {
         const amount = urlParams.get('amount');
         if (amount) {
           const numericAmount = parseFloat((parseFloat(amount) * 100).toString());
-          await createOnRamptxn(numericAmount, "HDFC Bank");
+          await createOnRamptxn(numericAmount, "Axis Bank");
           setIsComplete(true);
           setMessage("Transaction completed successfully");
         } else {

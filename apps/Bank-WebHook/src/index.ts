@@ -21,7 +21,7 @@ app.post("/hdfcWebhook", async (req, res) => {
 
   const paymentInformation = {
     token: req.body.token,
-    userId: req.body.user_identifier,
+    userId: req.body.userId,
     amount: req.body.amount,
   };
 
@@ -46,6 +46,7 @@ app.post("/hdfcWebhook", async (req, res) => {
         },
       }),
     ]);
+
     res.status(200).json({ message: "Captured payment" });
   } catch (e) {
     console.log(e);
