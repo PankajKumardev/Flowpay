@@ -1,40 +1,44 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { Loader2 } from "lucide-react";
 import axis from "../assests/axisLogo.png";
+import { createOnRamptxn } from "../app/lib/actions/createOnRampTxn";
 // This function simulates an API call to your backend
-const simulateTransaction = () => {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve({ success: true, message: "Transaction completed successfully" });
-    }, 5000); // Simulates a 5-second transaction process
-  });
-};
 
 export default function AxisTransactionPage() {
-  const [isLoading, setIsLoading] = useState(true);
-  const [isComplete, setIsComplete] = useState(false);
-  const [message, setMessage] = useState("");
+  const [isLoading, setIsLoading] = useState(true)
+  const [isComplete, setIsComplete] = useState(false)
+  const [message, setMessage] = useState("")
+  const transactionProcessed = useRef(false);
 
   useEffect(() => {
+
     const processTransaction = async () => {
+      if (transactionProcessed.current) return;
+      transactionProcessed.current = true;
       try {
-        const result = await simulateTransaction();
-        if (result.success) {
+        const urlParams = new URLSearchParams(window.location.search);
+        const amount = urlParams.get('amount');
+        if (amount) {
+          const numericAmount = parseFloat((parseFloat(amount) * 100).toString());
+          await createOnRamptxn(numericAmount, "HDFC Bank");
           setIsComplete(true);
-          setMessage(result.message);
+          setMessage("Transaction completed successfully");
+        } else {
+          setMessage("Invalid transaction amount.");
         }
       } catch (error) {
-        setMessage("Transaction failed. Please try again.");
+        setMessage("Transaction failed. Please try again.")
       } finally {
-        setIsLoading(false);
+        setIsLoading(false)
       }
-    };
+    }
 
-    processTransaction();
-  }, []);
+    processTransaction()
+  }, [createOnRamptxn])
+
 
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col">

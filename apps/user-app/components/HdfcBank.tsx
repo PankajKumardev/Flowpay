@@ -1,30 +1,31 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import Image from "next/image"
 import { Loader2 } from 'lucide-react'
 import hdfc from "../assests/HDFC-Bank-Logo.png"
-// This function simulates an API call to your backend
-const simulateTransaction = () => {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve({ success: true, message: "Transaction completed successfully" })
-    }, 5000) // Simulates a 5-second transaction process
-  })
-}
-
+import { createOnRamptxn } from "../app/lib/actions/createOnRampTxn"
 export default function HDFCTransactionPage() {
   const [isLoading, setIsLoading] = useState(true)
   const [isComplete, setIsComplete] = useState(false)
   const [message, setMessage] = useState("")
+  const transactionProcessed = useRef(false);
 
   useEffect(() => {
+
     const processTransaction = async () => {
+      if (transactionProcessed.current) return;
+      transactionProcessed.current = true;
       try {
-        const result = await simulateTransaction() as { success: boolean, message: string }
-        if (result.success) {
-          setIsComplete(true)
-          setMessage(result.message)
+        const urlParams = new URLSearchParams(window.location.search);
+        const amount = urlParams.get('amount');
+        if (amount) {
+          const numericAmount = parseFloat((parseFloat(amount) * 100).toString());
+          await createOnRamptxn(numericAmount, "HDFC Bank");
+          setIsComplete(true);
+          setMessage("Transaction completed successfully");
+        } else {
+          setMessage("Invalid transaction amount.");
         }
       } catch (error) {
         setMessage("Transaction failed. Please try again.")
@@ -34,7 +35,7 @@ export default function HDFCTransactionPage() {
     }
 
     processTransaction()
-  }, [])
+  }, [createOnRamptxn])
 
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col">
@@ -67,7 +68,7 @@ export default function HDFCTransactionPage() {
               </svg>
               <h2 className="text-2xl font-bold text-green-600">Transaction Successful!</h2>
               <p className="text-lg">{message}</p>
-              <p className="text-sm text-gray-600">Transaction ID: HDFC{Math.random().toString(36).substr(2, 9).toUpperCase()}</p>
+              <p className="text-sm text-gray-600">Transaction ID: HDFC{Math.random().toString(36).substring(2, 11).toUpperCase()}</p>
             </div>
           ) : (
             <div className="text-center space-y-4 py-8">
@@ -89,4 +90,3 @@ export default function HDFCTransactionPage() {
     </div>
   )
 }
-
