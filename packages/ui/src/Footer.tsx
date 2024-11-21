@@ -10,7 +10,7 @@ const Footer: React.FC<FooterProps> = ({
   email = "pankajams1234@gmail.com",
 }) => {
   return (
-    <footer className="bg-slate-300 text-gray-700 py-6 border-t border-slate-400">
+    <footer className="bg-slate-200 text-gray-700 py-6 border-t border-slate-300">
       <div className="container mx-auto px-6 sm:px-12">
         {/* Footer Content */}
         <div className="flex flex-col items-center space-y-6 sm:space-y-0 sm:flex-row sm:justify-between">
