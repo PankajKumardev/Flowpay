@@ -4,7 +4,7 @@ import { Inter } from "next/font/google";
 import { Providers } from "../provider";
 import { AppbarClient } from "../AppbarClient";
 import Footer from "@repo/ui/footer";
-  
+import ClientWrapper from "../ClientWrapper";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,13 +18,16 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }): JSX.Element {
+  const showAppbarAndFooter = true; // default value
+
   return (
     <html lang="en">
       <body className={inter.className}>
         <Providers>
-        <AppbarClient />
-          {children}
-          <Footer/>
+    
+          <ClientWrapper> 
+            {children}
+          </ClientWrapper>
         </Providers>
       </body>
     </html>

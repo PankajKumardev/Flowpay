@@ -11,3 +11,4 @@ export default async function Page() {
     redirect("/home");
   }
 }
+
