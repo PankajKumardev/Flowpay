@@ -1,2 +1,0 @@
--- AlterTable
-ALTER TABLE "p2pTransfer" ALTER COLUMN "timestamp" SET DEFAULT CURRENT_TIMESTAMP;

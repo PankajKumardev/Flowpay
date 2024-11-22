@@ -8,9 +8,9 @@ import { createOnRamptxn } from "../app/lib/actions/createOnRampTxn";
 // This function simulates an API call to your backend
 
 export default function AxisTransactionPage() {
-  const [isLoading, setIsLoading] = useState(true)
-  const [isComplete, setIsComplete] = useState(false)
-  const [message, setMessage] = useState("")
+  const [isLoading, setIsLoading] = useState(true);
+  const [isComplete, setIsComplete] = useState(false);
+  const [message, setMessage] = useState("");
   const transactionProcessed = useRef(false);
 
   useEffect(() => {
@@ -19,9 +19,9 @@ export default function AxisTransactionPage() {
       transactionProcessed.current = true;
       try {
         const urlParams = new URLSearchParams(window.location.search);
-        const amount = urlParams.get('amount');
+        const amount = urlParams.get("amount");
         if (amount) {
-          const numericAmount = parseFloat((parseFloat(amount) * 100).toString());
+          const numericAmount = parseInt(amount) * 100;
           await createOnRamptxn(numericAmount, "Axis Bank");
           setIsComplete(true);
           setMessage("Transaction completed successfully");
@@ -29,26 +29,25 @@ export default function AxisTransactionPage() {
           setMessage("Invalid transaction amount.");
         }
       } catch (error) {
-        setMessage("Transaction failed. Please try again.")
+        setMessage("Transaction failed. Please try again.");
       } finally {
-        setIsLoading(false)
+        setIsLoading(false);
       }
-    }
+    };
 
-    processTransaction()
-  }, [createOnRamptxn])
-
+    processTransaction();
+  }, [createOnRamptxn]);
 
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col">
       <header className="bg-[#97144D] text-white p-4">
         <div className="container mx-auto flex justify-between items-center h-10">
           <Image
-            src= {axis}
+            src={axis}
             alt="Axis Bank Logo"
-            width={120} 
-            className="pt-4 "        
-             />
+            width={120}
+            className="pt-4 "
+          />
           <nav>
             <ul className="flex space-x-4 text-sm">
               <li>Personal</li>
