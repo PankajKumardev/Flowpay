@@ -5,7 +5,6 @@ import Image from "next/image";
 import { Loader2 } from "lucide-react";
 import axis from "../assests/axisLogo.png";
 import { createOnRamptxn } from "../app/lib/actions/createOnRampTxn";
-// This function simulates an API call to your backend
 
 export default function AxisTransactionPage() {
   const [isLoading, setIsLoading] = useState(true);
@@ -19,12 +18,18 @@ export default function AxisTransactionPage() {
       transactionProcessed.current = true;
       try {
         const urlParams = new URLSearchParams(window.location.search);
-        const amount = urlParams.get("amount");
+        const amount = urlParams.get('amount');
         if (amount) {
-          const numericAmount = parseInt(amount) * 100;
-          await createOnRamptxn(numericAmount, "Axis Bank");
-          setIsComplete(true);
-          setMessage("Transaction completed successfully");
+          const numericAmount = parseFloat((parseFloat(amount) * 100).toString());
+          if (numericAmount <= 0) {
+            setMessage("Transaction amount must be greater than zero.");
+          } else if (numericAmount > 1000000) { // Example limit
+            setMessage("Transaction amount exceeds the limit.");
+          } else {
+            await createOnRamptxn(numericAmount, "Axis Bank");
+            setIsComplete(true);
+            setMessage("Transaction completed successfully");
+          }
         } else {
           setMessage("Invalid transaction amount.");
         }
@@ -46,7 +51,7 @@ export default function AxisTransactionPage() {
             src={axis}
             alt="Axis Bank Logo"
             width={120}
-            className="pt-4 "
+            className="pt-4"
           />
           <nav>
             <ul className="flex space-x-4 text-sm">
