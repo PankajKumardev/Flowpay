@@ -37,7 +37,7 @@ export default async function () {
   const balance = await getBalance();
   const transactions = await getOnRampTransactions();
   return (
-    <div className="w-full mt-4 ">
+    <div className="w-full mt-10 ">
       <div className="text-4xl pt-8 mb-8 font-bold text-violet-600 flex flex-col items-center">
         <h1 className="text-4xl font-extrabold text-slate-800">
           <span className="text-blue-600">FlowPay </span>Transfer
