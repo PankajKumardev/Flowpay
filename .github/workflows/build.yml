@@ -10,16 +10,33 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Use Node.js
+        name: Checkout code
+
+      - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '20'
-      
+
+      - name: Cache node_modules
+        uses: actions/cache@v3
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-modules-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-modules-
+
       - name: Install Dependencies
-        run: npm install
-      
-      - name: Generate prisma client
+        run: npm ci
+        # `npm ci` is preferred over `npm install` in CI environments to install exactly what is in package-lock.json
+
+      - name: Verify @repo/ui Installation
+        run: npm ls @repo/ui || echo '@repo/ui not found'
+
+      - name: Generate Prisma Client
         run: npm run db:generate
-        
+
+      - name: Check node_modules for @repo/ui
+        run: ls -l node_modules/@repo/ui || echo '@repo/ui is missing or not linked'
+
       - name: Run Build
         run: npm run build
