@@ -3,7 +3,7 @@ name: CI - Build and Test on Pull Request
 on:
   pull_request:
     branches:
-      - master
+      - main
 
 jobs:
   build:
@@ -20,4 +20,3 @@ jobs:
 
       - name: Build
         run: npm run build
-        
