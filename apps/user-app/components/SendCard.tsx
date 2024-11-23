@@ -34,6 +34,7 @@ export function SendCard() {
     }
   };
 
+  
   return (
     <div className="h-full mt-10 ">
       <Center>
