@@ -5,7 +5,6 @@ import { Card } from "@repo/ui/card";
 import { Textinput } from "@repo/ui/textinput";
 import { Select } from "@repo/ui/select";
 import { Button } from "@repo/ui/button";
-import { createOnRamptxn } from "../app/lib/actions/createOnRampTxn";
 import { useRouter } from "next/navigation";
 
 const SUPPORTED_BANKS = [
@@ -52,18 +51,17 @@ export const AddMoney = () => {
           }))}
         />
         <div className="flex justify-center pt-4">
-
-            <Button
-              onClick={async () => {
+          <Button
+            onClick={async () => {
               if (provider === "HDFC Bank") {
-                window.open(`/Bank/hdfc?amount=${value}`, '_blank');
+                window.open(`/Bank/hdfc?amount=${value}`, "_blank");
               } else if (provider === "Axis Bank") {
-                window.open(`/Bank/axis?amount=${value}`, '_blank');
+                window.open(`/Bank/axis?amount=${value}`, "_blank");
               }
-              }}
-            >
+            }}
+          >
             Add Money
-            </Button>
+          </Button>
         </div>
       </div>
     </Card>
