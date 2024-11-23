@@ -42,4 +42,4 @@ jobs:
             sudo docker pull pankajkumardev/flowpay:latest
             sudo docker stop web-app || true
             sudo docker rm web-app || true
-            sudo docker run -e DATABASE_URL=${{ secrets.DB_URL }} -e JWT_SECRET=${{ secrets.JWT_SECRET }}  -d --name web-app -p 3005:3000 pankajkumardev/flowpay:latest
+            sudo docker run -e DATABASE_URL=${{ secrets.DB_URL }} -e JWT_SECRET=${{ secrets.JWT_SECRET }} -e NEXTAUTH_URL=http://ec2-44-202-164-212.compute-1.amazonaws.com:3005 -d --name web-app -p 3005:3000 pankajkumardev/flowpay:latest
