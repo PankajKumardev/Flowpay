@@ -81,7 +81,15 @@ function BenefitItem({
   );
 }
 
-function HowItWorksStep({ number, title, description }: { number: number; title: string; description: string }) {
+function HowItWorksStep({
+  number,
+  title,
+  description,
+}: {
+  number: number;
+  title: string;
+  description: string;
+}) {
   return (
     <div className="flex flex-col items-center text-center">
       <div className="w-12 h-12 rounded-full bg-blue-600 text-white flex items-center justify-center text-xl font-bold mb-4">
@@ -228,7 +236,8 @@ export function HeroSection() {
             Ready to Simplify Your Finances?
           </h2>
           <p className="text-xl text-gray-600 mb-12 max-w-2xl mx-auto">
-            Join thousands of users who are already enjoying the benefits of FlowPay. Start your journey to smarter financial management today.
+            Join thousands of users who are already enjoying the benefits of
+            FlowPay. Start your journey to smarter financial management today.
           </p>
           <Link href="/api/auth/signin">
             <button className="group relative inline-flex items-center justify-center rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 px-8 py-4 text-lg font-medium text-white hover:from-blue-700 hover:to-indigo-700 transition-all duration-200 shadow-lg hover:shadow-xl">
@@ -241,4 +250,3 @@ export function HeroSection() {
     </div>
   );
 }
-
