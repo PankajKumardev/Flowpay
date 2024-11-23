@@ -59,6 +59,7 @@ export function SendCard() {
               {dropdownVisible && (
                 <NumberList number={number} onSelect={handleNumberSelect} />
               )}
+              
             </div>
             <Textinput
               placeholder={"Amount"}
