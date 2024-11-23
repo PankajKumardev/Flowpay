@@ -6,31 +6,34 @@ import { ArrowRight, Smartphone, Lock } from "lucide-react";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 
-
 export default function LoginSignup() {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState("");
   const router = useRouter();
-    
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
+    setError(""); // Clear previous error
     const res = await signIn("credentials", {
       phone: phoneNumber,
       password: password,
       redirect: false,
     });
-    console.log(res);
-    router.push("/dashboard");
     setIsLoading(false);
 
     if (res?.status === 201) {
       toast.success(
         "Welcome to FlowPay! Your account has been created successfully.",
       );
-    } else {
+      router.push("/dashboard");
+    } else if (res?.status === 200) {
       toast.success("You've successfully logged in to your FlowPay account.");
+      router.push("/dashboard");
+    } else {
+      setError("Invalid phone number or password. Please try again.");
     }
   };
 
@@ -78,6 +81,7 @@ export default function LoginSignup() {
               />
             </div>
           </div>
+          {error && <p className="text-red-500 text-sm">{error}</p>}
           <button
             type="submit"
             className="w-full bg-blue-600 hover:bg-blue-700 text-white flex rounded-md h-10 items-center justify-center text-sm"
