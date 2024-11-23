@@ -25,15 +25,7 @@ jobs:
       # Install dependencies using npm ci (to ensure consistency)
       - name: Install dependencies
         run: npm ci
-
-      # Clean Turborepo cache (optional but can resolve issues)
-      - name: Clean Turborepo cache
-        run: npx turbo clean
-
-      # Check Turborepo version (optional for troubleshooting)
-      - name: Check Turborepo version
-        run: npx turbo --version
-
+        
       # Build the project using Turborepo
       - name: Build
         run: npm run build
