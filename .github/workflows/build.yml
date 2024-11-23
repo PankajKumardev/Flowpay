@@ -1,13 +1,12 @@
-name: CI - Build and Test on Pull Request
+name: Build on PR
 
 on:
   pull_request:
     branches:
-      - main
+      - master
 
 jobs:
   build:
-    name: Build and Test the Project
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -19,5 +18,8 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
-      - name: Run build
+      - name: Generate prisma client
+        run: npm run db:generate
+
+      - name: Run Build
         run: npm run build
