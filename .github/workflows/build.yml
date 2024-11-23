@@ -9,14 +9,31 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      # Checkout the code
       - uses: actions/checkout@v3
+
+      # Set up Node.js (version 20, adjust if necessary)
       - name: Use Node.js
         uses: actions/setup-node@v3
         with:
           node-version: "20"
 
-      - name: Install dependencies
-        run: npm install
+      # Install Turborepo (ensure correct version)
+      - name: Install Turborepo
+        run: npm install turbo@2.3.1
 
+      # Install dependencies using npm ci (to ensure consistency)
+      - name: Install dependencies
+        run: npm ci
+
+      # Clean Turborepo cache (optional but can resolve issues)
+      - name: Clean Turborepo cache
+        run: npx turbo clean
+
+      # Check Turborepo version (optional for troubleshooting)
+      - name: Check Turborepo version
+        run: npx turbo --version
+
+      # Build the project using Turborepo
       - name: Build
         run: npm run build
