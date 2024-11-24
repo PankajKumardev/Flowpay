@@ -79,9 +79,6 @@ export default async function TransactionsPage() {
           Track all your transactions effortlessly
         </p>
       </div>
-      <div className="flex justify-center mb-8">
-        <SendCard />
-      </div>
       <div className="flex flex-col gap-5">
         <div className="w-full grid grid-cols-1 md:grid-cols-2 px-4 md:px-10 gap-3">
           <h1 className="text-2xl text-slate-800 pt-2 font-bold col-span-1 md:col-span-2">
