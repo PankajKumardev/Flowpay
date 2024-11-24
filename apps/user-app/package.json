@@ -7,7 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint . --max-warnings 0",
-      "db:migrate": "npm run db:migrate"
+   "db:generate": "npx prisma generate",
+    "db:migrate": "npx prisma migrate dev --name migrate",
+    "start-user-app": "npm run start"
   },
   "dependencies": {
     "@repo/db": "*",
