@@ -14,6 +14,7 @@
     "@repo/store": "*",
     "@repo/ui": "*",
     "@types/bcrypt": "^5.0.2",
+    "@vercel/analytics": "^1.4.1",
     "axios": "^1.7.7",
     "bcrypt": "^5.1.1",
     "framer-motion": "^11.11.17",

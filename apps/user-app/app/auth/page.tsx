@@ -17,8 +17,9 @@ export default function LoginSignup() {
     e.preventDefault();
     setIsLoading(true);
     setError(""); // Clear previous error
+    const onlyNumber = phoneNumber.replace(/\D/g, "");
     const res = await signIn("credentials", {
-      phone: phoneNumber,
+      phone: onlyNumber,
       password: password,
       redirect: false,
     });
