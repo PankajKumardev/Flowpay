@@ -17,7 +17,7 @@ export default async function Layout({
     <div className="flex pt-14 bg-slate-100 min-h-screen overflow-hidden">
       <MobileNav>
         <nav className="w-full md:w-60 border-r border-slate-200/50 min-h-[calc(100vh-3.5rem)] md:mr-8 mr-4">
-          <div className="flex flex-col gap-4 px-4">
+          <div className="flex flex-col gap-4 px-4 py-20">
             <SidebarItem href={"/dashboard"} title="Home" icon={<HomeIcon />} />
             <SidebarItem
               href={"/transfer"}
@@ -29,7 +29,11 @@ export default async function Layout({
               title="Transactions"
               icon={<TransactionsIcon />}
             />
-            <SidebarItem href={"/p2p"} title="P2P Transfer" icon={<P2PIcon />} />
+            <SidebarItem
+              href={"/p2p"}
+              title="P2P Transfer"
+              icon={<P2PIcon />}
+            />
           </div>
         </nav>
       </MobileNav>
@@ -48,7 +52,7 @@ function HomeIcon() {
       viewBox="0 0 24 24"
       strokeWidth="1.5"
       stroke="currentColor"
-      className="w-4 h-4 md:w-6 md:h-6"
+      className="w-6 h-6"
     >
       <path
         strokeLinecap="round"
@@ -67,7 +71,7 @@ function TransferIcon() {
       viewBox="0 0 24 24"
       strokeWidth="1.5"
       stroke="currentColor"
-      className="w-4 h-4 md:w-6 md:h-6"
+      className="w-6 h-6"
     >
       <path
         strokeLinecap="round"
@@ -86,7 +90,7 @@ function TransactionsIcon() {
       viewBox="0 0 24 24"
       strokeWidth="1.5"
       stroke="currentColor"
-      className="w-4 h-4 md:w-6 md:h-6"
+      className="w-6 h-6"
     >
       <path
         strokeLinecap="round"
@@ -105,7 +109,7 @@ function P2PIcon() {
       viewBox="0 0 24 24"
       strokeWidth="1.5"
       stroke="currentColor"
-      className="w-4 h-4 md:w-6 md:h-6"
+      className="w-6 h-6"
     >
       <path
         strokeLinecap="round"
