@@ -3,7 +3,6 @@ import { authOptions } from "../../lib/auth";
 import prisma from "@repo/db/client";
 import { OnRampTransaction } from "../../../components/OnRampTransaction";
 
-
 async function getsentP2PTranscations() {
   const session = await getServerSession(authOptions);
   const txns = await prisma.p2pTransfer.findMany({
@@ -44,7 +43,7 @@ async function getOnRampTransactions(status: any) {
       status: status,
     },
   });
-  return txns.map((t) => ({
+  return txns.map((t: any) => ({
     time: t.startTime,
     amount: t.amount,
     status: t.status,
