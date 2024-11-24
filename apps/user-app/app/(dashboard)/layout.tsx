@@ -14,9 +14,9 @@ export default async function Layout({
     redirect("/home");
   }
   return (
-    <div className="flex pt-14 bg-slate-100 min-h-screen overflow-hidden">
+    <div className="flex pt-14 bg-slate-100 min-h-screen h-full overflow-hidden">
       <MobileNav>
-        <nav className="w-full md:w-60 border-r border-slate-200/50 min-h-[calc(100vh-3.5rem)] md:mr-8 mr-4">
+        <nav className="w-full md:w-60 border-r border-slate-300 bg-slate-100 min-h-screen flex flex-col flex-grow">
           <div className="flex flex-col gap-4 px-4 py-20">
             <SidebarItem href={"/dashboard"} title="Home" icon={<HomeIcon />} />
             <SidebarItem
