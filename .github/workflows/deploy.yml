@@ -3,7 +3,7 @@ name: Build and Deploy to Docker Hub
 on:
   push:
     branches:
-      - main # Adjusted to trigger on pushes to master
+      - main # Trigger on pushes to the main branch
 
 jobs:
   build-and-push:
@@ -27,11 +27,11 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          no-cache: true 
-          tags: pankajkumardev/flowpay:latest
+          no-cache: true
+          tags: pankajkumardev/flowpay:${{ github.ref_name }}  # Tag using Git branch name or tag
 
       - name: Verify Pushed Image
-        run: docker pull pankajkumardev/flowpay:latest
+        run: docker pull pankajkumardev/flowpay:${{ github.ref_name }}
 
       - name: Deploy to EC2
         uses: appleboy/ssh-action@master
@@ -40,7 +40,7 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }}
           key: ${{ secrets.SSH_KEY }}
           script: |
-            sudo docker pull pankajkumardev/flowpay:latest
+            sudo docker pull pankajkumardev/flowpay:${{ github.ref_name }}  # Pull image using the versioned tag
             sudo docker stop web-app || true
             sudo docker rm web-app || true
-            sudo docker run -e DATABASE_URL=${{secrets.DB_URL}} -e JWT_SECRET=${{secrets.JWT_SECRET}} -e NEXTAUTH_URL=http://ec2-44-202-164-212.compute-1.amazonaws.com:3005 -d --name web-app -p 3005:3000 pankajkumardev/flowpay:latest
+            sudo docker run -e DATABASE_URL=${{secrets.DB_URL}} -e JWT_SECRET=${{secrets.JWT_SECRET}} -e NEXTAUTH_URL=http://ec2-44-202-164-212.compute-1.amazonaws.com:3005 -d --name web-app -p 3005:3000 pankajkumardev/flowpay:${{ github.ref_name }}  # Run the container with the specific tag
