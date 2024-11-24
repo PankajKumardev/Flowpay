@@ -18,12 +18,15 @@ export default function AxisTransactionPage() {
       transactionProcessed.current = true;
       try {
         const urlParams = new URLSearchParams(window.location.search);
-        const amount = urlParams.get('amount');
+        const amount = urlParams.get("amount");
         if (amount) {
-          const numericAmount = parseFloat((parseFloat(amount) * 100).toString());
+          const numericAmount = parseFloat(
+            (parseFloat(amount) * 100).toString(),
+          );
           if (numericAmount <= 0) {
             setMessage("Transaction amount must be greater than zero.");
-          } else if (numericAmount > 1000000) { // Example limit
+          } else if (numericAmount > 1000000) {
+            // Example limit
             setMessage("Transaction amount exceeds the limit.");
           } else {
             await createOnRamptxn(numericAmount, "Axis Bank");
@@ -47,12 +50,7 @@ export default function AxisTransactionPage() {
     <div className="min-h-screen bg-gray-100 flex flex-col">
       <header className="bg-[#97144D] text-white p-4">
         <div className="container mx-auto flex justify-between items-center h-10">
-          <Image
-            src={axis}
-            alt="Axis Bank Logo"
-            width={120}
-            className="pt-4"
-          />
+          <Image src={axis} alt="Axis Bank Logo" width={120} className="pt-4" />
           <nav>
             <ul className="flex space-x-4 text-sm">
               <li>Personal</li>

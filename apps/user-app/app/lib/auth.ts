@@ -21,13 +21,12 @@ export const authOptions = {
         password: { label: "Password", type: "password", required: true },
       },
 
-      // TODO: User credentials type from next-aut
       async authorize(credentials?: { phone: string; password: string }) {
         if (!credentials || !credentials.phone || !credentials.password) {
           console.error("Missing credentials");
           return null;
         }
-        // Do zod validation, OTP validation here
+   
         const result = credentialsSchema.safeParse(credentials);
         if (!result.success) {
           console.error(result.error);
@@ -87,6 +86,6 @@ export const authOptions = {
     },
   },
   pages: {
-    signIn: '/auth',
-}
+    signIn: "/auth",
+  },
 };

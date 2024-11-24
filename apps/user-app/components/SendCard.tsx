@@ -10,31 +10,30 @@ import { NumberList } from "./NumberList";
 export function SendCard() {
   const [number, setNumber] = useState<string>("");
   const [amount, setAmount] = useState("");
-  const [message, setMessage] = useState<string | null>(null); // State for success/failure message
-  const [loading, setLoading] = useState(false); // State for loading
-  const [dropdownVisible, setDropdownVisible] = useState(false); // State for dropdown visibility
+  const [message, setMessage] = useState<string | null>(null);
+  const [loading, setLoading] = useState(false);
+  const [dropdownVisible, setDropdownVisible] = useState(false);
   const inputRef = useRef<HTMLInputElement | null>(null); // Use ref for the input
 
   const handleNumberSelect = (selectedNumber: string) => {
-    setNumber(selectedNumber); // Set the selected number in the input field
-    setDropdownVisible(false); // Hide the dropdown after selection
-    inputRef.current?.blur(); // Remove focus from the input
+    setNumber(selectedNumber);
+    setDropdownVisible(false);
+    inputRef.current?.blur();
   };
 
   const handleBlur = () => {
-    setTimeout(() => setDropdownVisible(false), 200); // Delay hiding dropdown to allow selection
+    setTimeout(() => setDropdownVisible(false), 200);
   };
 
   const handleSendMoney = async () => {
     try {
       await p2pTransfer(number, Number(amount) * 100);
-      setMessage("Money sent successfully!"); // Set success message
+      setMessage("Money sent successfully!");
     } catch (error) {
-      setMessage("Failed to send money. Please try again."); // Set failure message
+      setMessage("Failed to send money. Please try again.");
     }
   };
 
-  
   return (
     <div className="h-full mt-10 ">
       <Center>
@@ -48,10 +47,10 @@ export function SendCard() {
                 ref={inputRef} // Attach the input reference
                 type="text"
                 placeholder="Number"
-                value={number} // Controlled input value
+                value={number}
                 onChange={(e) => {
                   setNumber(e.target.value);
-                  setDropdownVisible(true); // Show dropdown when typing
+                  setDropdownVisible(true);
                 }}
                 onBlur={handleBlur} // Hide dropdown when input loses focus
                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
@@ -79,7 +78,7 @@ export function SendCard() {
                 {loading ? "Sending..." : "Send"}
               </button>
             </div>
-            {/* Show success or error message */}
+
             {message && (
               <p
                 className={`mt-4 text-center text-sm ${message === "Money sent successfully!" ? "text-green-600" : "text-red-600"}`}

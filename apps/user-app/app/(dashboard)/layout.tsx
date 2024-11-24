@@ -29,7 +29,11 @@ export default async function Layout({
               title="Transactions"
               icon={<TransactionsIcon />}
             />
-            <SidebarItem href={"/p2p"} title="P2P Transfer" icon={<P2PIcon />} />
+            <SidebarItem
+              href={"/p2p"}
+              title="P2P Transfer"
+              icon={<P2PIcon />}
+            />
           </div>
         </div>
       </MobileNav>

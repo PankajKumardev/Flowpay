@@ -8,7 +8,9 @@ interface NumberListProps {
 }
 
 export function NumberList({ number, onSelect }: NumberListProps) {
-  const [filteredNumbers, setFilteredNumbers] = useState<{ number: string }[]>([]);
+  const [filteredNumbers, setFilteredNumbers] = useState<{ number: string }[]>(
+    [],
+  );
   const [loading, setLoading] = useState(false);
 
   const fetchNumbers = async (input: string) => {
@@ -24,7 +26,7 @@ export function NumberList({ number, onSelect }: NumberListProps) {
     }
   };
 
-//debounce the input to avoid multiple requests
+  //debounce the input to avoid multiple requests
   useEffect(() => {
     if (number.length > 0) {
       const timer = setTimeout(() => {

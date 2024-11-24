@@ -13,12 +13,12 @@ export function MobileNav({ children }: MobileNavProps) {
   // Prevent body scroll when menu is open
   useEffect(() => {
     if (isOpen) {
-      document.body.style.overflow = 'hidden';
+      document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = 'unset';
+      document.body.style.overflow = "unset";
     }
     return () => {
-      document.body.style.overflow = 'unset';
+      document.body.style.overflow = "unset";
     };
   }, [isOpen]);
 
@@ -34,7 +34,7 @@ export function MobileNav({ children }: MobileNavProps) {
 
       {/* Backdrop with blur */}
       {isOpen && (
-        <div 
+        <div
           className="fixed inset-0 backdrop-blur-sm bg-black/30 z-[80] md:hidden transition-all duration-300"
           onClick={() => setIsOpen(false)}
         />
@@ -48,16 +48,12 @@ export function MobileNav({ children }: MobileNavProps) {
       >
         {/* Custom scrollbar container */}
         <div className="h-full pt-24 overflow-y-auto scrollbar-hide">
-          <div className="pb-8">
-            {children}
-          </div>
+          <div className="pb-8">{children}</div>
         </div>
       </div>
 
       {/* Desktop view */}
-      <div className="hidden md:block h-full">
-        {children}
-      </div>
+      <div className="hidden md:block h-full">{children}</div>
 
       <style jsx global>{`
         /* Custom scrollbar styles */
