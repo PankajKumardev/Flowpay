@@ -3,7 +3,7 @@ name: Build and Deploy to Docker Hub
 on:
   push:
     branches:
-      - main # Trigger on pushes to the main branch
+      - main  # Trigger on pushes to the main branch
 
 jobs:
   build-and-push:
@@ -27,11 +27,11 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          no-cache: true
-          tags: pankajkumardev/flowpay:${{ github.ref_name }} # Tag using Git branch name or tag
+          no-cache: true  # Ensure fresh build
+          tags: pankajkumardev/flowpay:${{ github.sha }}  # Tag using the commit hash to avoid conflicts
 
       - name: Verify Pushed Image
-        run: docker pull pankajkumardev/flowpay:${{ github.ref_name }}
+        run: docker pull pankajkumardev/flowpay:${{ github.sha }}  # Pull the latest image using the commit hash
 
       - name: Deploy to EC2
         uses: appleboy/ssh-action@master
@@ -40,16 +40,15 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }}
           key: ${{ secrets.SSH_KEY }}
           script: |
-            sudo docker pull pankajkumardev/flowpay:${{ github.ref_name }}  # Pull image using the versioned tag
+            sudo docker pull pankajkumardev/flowpay:${{ github.sha }}  # Pull the image using the commit hash
             sudo docker stop web-app || true
             sudo docker rm web-app || true
-            sudo docker run -e DATABASE_URL=${{secrets.DB_URL}} -e JWT_SECRET=${{secrets.JWT_SECRET}} -e NEXTAUTH_URL=http://ec2-44-202-164-212.compute-1.amazonaws.com:3005 -d --name web-app -p 3005:3000 pankajkumardev/flowpay:${{ github.ref_name }}  # Run the container with the specific tag
+            sudo docker run -d -p 3005:3000 pankajkumardev/flowpay:${{ github.sha }}  # Run with the specific tag
 
-      # Cleanup Docker images and containers
       - name: Cleanup Docker images and containers
         run: |
           echo "Cleaning up Docker resources"
-          # Remove unused Docker images and containers to free up space
+          # Remove unused Docker images, containers, volumes, and networks to free up space
           sudo docker system prune -a -f --volumes
           sudo docker builder prune -a -f
           sudo docker container prune -f
