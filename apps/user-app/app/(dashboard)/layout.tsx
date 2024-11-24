@@ -1,5 +1,6 @@
 import { getServerSession } from "next-auth";
 import { SidebarItem } from "../../components/SiderBarItem";
+import { MobileNav } from "../../components/MobileNav";
 import { authOptions } from "../lib/auth";
 import { redirect } from "next/navigation";
 
@@ -13,26 +14,28 @@ export default async function Layout({
     redirect("/home");
   }
   return (
-    <div className="flex pt-14 bg-slate-100 overflow-hidden">
-      <div className=" w-32 md:w-60 border-r border-slate-300 min-h-screen pt-28 md:mr-8 mr-4 ]">
-        <div className="flex flex-col gap-4">
-          <SidebarItem href={"/dashboard"} title="Home" icon={<HomeIcon />} />
-
-          <SidebarItem
-            href={"/transfer"}
-            title="Transfer"
-            icon={<TransferIcon />}
-          />
-          <SidebarItem
-            href={"/transactions"}
-            title="Transactions"
-            icon={<TransactionsIcon />}
-          />
-
-          <SidebarItem href={"/p2p"} title="P2P Transfer" icon={<P2PIcon />} />
-        </div>
-      </div>
-      <div className="flex-1 pb-10">{children}</div>
+    <div className="flex pt-14 bg-slate-100 min-h-screen overflow-hidden">
+      <MobileNav>
+        <nav className="w-full md:w-60 border-r border-slate-200/50 min-h-[calc(100vh-3.5rem)] md:mr-8 mr-4">
+          <div className="flex flex-col gap-4 px-4">
+            <SidebarItem href={"/dashboard"} title="Home" icon={<HomeIcon />} />
+            <SidebarItem
+              href={"/transfer"}
+              title="Transfer"
+              icon={<TransferIcon />}
+            />
+            <SidebarItem
+              href={"/transactions"}
+              title="Transactions"
+              icon={<TransactionsIcon />}
+            />
+            <SidebarItem href={"/p2p"} title="P2P Transfer" icon={<P2PIcon />} />
+          </div>
+        </nav>
+      </MobileNav>
+      <main className="flex-1 pb-10 pt-4 px-4 md:px-8 overflow-hidden">
+        {children}
+      </main>
     </div>
   );
 }
@@ -55,6 +58,7 @@ function HomeIcon() {
     </svg>
   );
 }
+
 function TransferIcon() {
   return (
     <svg

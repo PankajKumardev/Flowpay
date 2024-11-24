@@ -18,7 +18,7 @@ export const Appbar = ({ user, onSignin, onSignout }: AppbarProps) => {
   }
 
   return (
-    <div className="flex justify-between border py-0.5 px-4 fixed top-2 left-0 right-0 z-50 md:max-w-7xl  mx-auto rounded-lg w-full backdrop-blur-md bg-blue-200 bg-opacity-5 border-gray-1 00 mb-6">
+    <div className="px-10  flex justify-between border py-0.5 md:px-4 fixed top-2 left-0 right-0 z-50 md:max-w-7xl  mx-auto rounded-lg w-full backdrop-blur-md bg-blue-200 bg-opacity-5 border-gray-1 00 mb-6 ">
       <div className="text-[20px] flex flex-col justify-center">
         <div
           className="font-semibold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent cursor-pointer"
