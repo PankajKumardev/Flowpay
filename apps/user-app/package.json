@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev --port 3001",
-    "build": "next build",
+    "build": "cd ../../packages/db && npx prisma generate && cd ../../apps/user-app && next build",
+    "prisma:generate": "cd ../../packages/db && npx prisma generate",
     "start": "next start",
     "lint": "eslint . --max-warnings 0"
   },
