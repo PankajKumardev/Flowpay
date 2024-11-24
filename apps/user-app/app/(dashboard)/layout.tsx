@@ -1,8 +1,8 @@
 import { getServerSession } from "next-auth";
 import { SidebarItem } from "../../components/SiderBarItem";
-import { MobileNav } from "../../components/MobileNav";
 import { authOptions } from "../lib/auth";
 import { redirect } from "next/navigation";
+import { MobileNav } from "../../components/MobileNav";
 
 export default async function Layout({
   children,
@@ -14,10 +14,10 @@ export default async function Layout({
     redirect("/home");
   }
   return (
-    <div className="flex pt-14 bg-slate-100 min-h-screen h-full overflow-hidden">
+    <div className="flex pt-14 bg-slate-100 overflow-hidden">
       <MobileNav>
-        <nav className="w-full md:w-60 border-r border-slate-300 bg-slate-100 min-h-screen flex flex-col flex-grow">
-          <div className="flex flex-col gap-4 px-4 py-20">
+        <div className="w-32 md:w-60 md:border-r md:border-slate-300 min-h-svh flex-grow pt-28 md:mr-8 ml-4">
+          <div className="flex flex-col gap-4">
             <SidebarItem href={"/dashboard"} title="Home" icon={<HomeIcon />} />
             <SidebarItem
               href={"/transfer"}
@@ -29,17 +29,11 @@ export default async function Layout({
               title="Transactions"
               icon={<TransactionsIcon />}
             />
-            <SidebarItem
-              href={"/p2p"}
-              title="P2P Transfer"
-              icon={<P2PIcon />}
-            />
+            <SidebarItem href={"/p2p"} title="P2P Transfer" icon={<P2PIcon />} />
           </div>
-        </nav>
+        </div>
       </MobileNav>
-      <main className="flex-1 pb-10 pt-4 px-4 md:px-8 overflow-hidden">
-        {children}
-      </main>
+      <div className="flex-1 pb-10">{children}</div>
     </div>
   );
 }
@@ -52,7 +46,7 @@ function HomeIcon() {
       viewBox="0 0 24 24"
       strokeWidth="1.5"
       stroke="currentColor"
-      className="w-6 h-6"
+      className="w-4 h-4 md:w-6 md:h-6"
     >
       <path
         strokeLinecap="round"
@@ -71,7 +65,7 @@ function TransferIcon() {
       viewBox="0 0 24 24"
       strokeWidth="1.5"
       stroke="currentColor"
-      className="w-6 h-6"
+      className="w-4 h-4 md:w-6 md:h-6"
     >
       <path
         strokeLinecap="round"
@@ -90,7 +84,7 @@ function TransactionsIcon() {
       viewBox="0 0 24 24"
       strokeWidth="1.5"
       stroke="currentColor"
-      className="w-6 h-6"
+      className="w-4 h-4 md:w-6 md:h-6"
     >
       <path
         strokeLinecap="round"
@@ -109,7 +103,7 @@ function P2PIcon() {
       viewBox="0 0 24 24"
       strokeWidth="1.5"
       stroke="currentColor"
-      className="w-6 h-6"
+      className="w-4 h-4 md:w-6 md:h-6"
     >
       <path
         strokeLinecap="round"
