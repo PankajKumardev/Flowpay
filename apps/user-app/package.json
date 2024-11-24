@@ -6,9 +6,7 @@
     "dev": "next dev --port 3001",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint . --max-warnings 0",
-    "db:migrate": "npm run db:migrate --workspace=..",
-    "db:generate": "npm run db:generate --workspace=.."
+    "lint": "eslint . --max-warnings 0"
   },
   "dependencies": {
     "@repo/db": "*",
