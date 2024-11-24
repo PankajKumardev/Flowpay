@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint . --max-warnings 0",
-     "db:migrate": "npm run db:migrate --workspace=.."
+      "db:migrate": "npm run db:migrate"
   },
   "dependencies": {
     "@repo/db": "*",
