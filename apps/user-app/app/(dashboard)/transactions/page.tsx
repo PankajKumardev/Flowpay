@@ -2,7 +2,7 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "../../lib/auth";
 import prisma from "@repo/db/client";
 import { OnRampTransaction } from "../../../components/OnRampTransaction";
-import { SendCard } from "../../../components/SendCard";
+
 
 async function getsentP2PTranscations() {
   const session = await getServerSession(authOptions);
