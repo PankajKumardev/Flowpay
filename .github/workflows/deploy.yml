@@ -27,7 +27,7 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          no-cache: true  # Ensure fresh build
+          no-cache: true  ## Ensure fresh build
           tags: pankajkumardev/flowpay:${{ github.sha }}  # Tag using the commit hash to avoid conflicts
 
       - name: Verify Pushed Image
