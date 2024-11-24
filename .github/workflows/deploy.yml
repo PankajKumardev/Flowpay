@@ -3,7 +3,7 @@ name: Build and Deploy to Docker Hub
 on:
   push:
     branches:
-      - main  # Trigger on pushes to the main branch
+      - main # Trigger on pushes to the main branch
 
 jobs:
   build-and-push:
@@ -11,6 +11,16 @@ jobs:
     steps:
       - name: Check Out Repo
         uses: actions/checkout@v2
+
+      - name: Cleanup Docker resources before build
+        run: |
+          echo "Cleaning up Docker resources before build"
+          sudo docker system prune -a -f --volumes
+          sudo docker builder prune -a -f
+          sudo docker container prune -f
+          sudo docker image prune -a -f
+          sudo docker volume prune -f
+          sudo docker network prune -f
 
       - name: Prepare Dockerfile
         run: cp ./docker/Dockerfile.user ./Dockerfile
@@ -27,11 +37,11 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          no-cache: true  ## Ensure fresh build
-          tags: pankajkumardev/flowpay:${{ github.sha }}  # Tag using the commit hash to avoid conflicts
+          no-cache: true ## Ensure fresh build
+          tags: pankajkumardev/flowpay:${{ github.sha }} # Tag using the commit hash to avoid conflicts
 
       - name: Verify Pushed Image
-        run: docker pull pankajkumardev/flowpay:${{ github.sha }}  # Pull the latest image using the commit hash
+        run: docker pull pankajkumardev/flowpay:${{ github.sha }} # Pull the latest image using the commit hash
 
       - name: Deploy to EC2
         uses: appleboy/ssh-action@master
@@ -40,16 +50,19 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }}
           key: ${{ secrets.SSH_KEY }}
           script: |
+            # Pull the latest image and run the container
             sudo docker pull pankajkumardev/flowpay:${{ github.sha }}  # Pull the image using the commit hash
             sudo docker stop web-app || true
             sudo docker rm web-app || true
-            sudo docker run -d -p 3005:3000 pankajkumardev/flowpay:${{ github.sha }}  # Run with the specific tag
+            sudo docker run -d -p 3005:3000 --name web-app pankajkumardev/flowpay:${{ github.sha }}  # Run with the specific tag
 
-      - name: Cleanup Docker images and containers
+      - name: Cleanup Docker resources after deployment
         run: |
-          echo "Cleaning up Docker resources"
+          echo "Cleaning up Docker resources after deployment"
           # Remove unused Docker images, containers, volumes, and networks to free up space
           sudo docker system prune -a -f --volumes
           sudo docker builder prune -a -f
           sudo docker container prune -f
           sudo docker image prune -a -f
+          sudo docker volume prune -f
+          sudo docker network prune -f
