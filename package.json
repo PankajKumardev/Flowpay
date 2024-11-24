@@ -2,12 +2,12 @@
   "name": "week-18",
   "private": true,
   "scripts": {
-    "build": "turbo build",
     "dev": "turbo dev",
     "lint": "turbo lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "db:generate": "cd packages/db && npx prisma generate && cd ../..",
-    "db:migrate": "cd packages/db && npx prisma migrate dev --name migrate",
+    "build": "npm run db:generate && turbo build",
+    "db:generate": "cd packages/db && npx prisma generate --schema=packages/db/prisma/schema.prisma",
+    "db:migrate": "cd packages/db && npx prisma migrate deploy --schema=packages/db/prisma/schema.prisma",
     "start-user-app": "cd ./apps/user-app && npm run start"
   },
   "devDependencies": {
