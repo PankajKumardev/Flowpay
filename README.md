@@ -1,4 +1,4 @@
-# FlowPay Documentation
+# FlowPay
 
 ![FlowPay](https://img.shields.io/github/stars/PankajKumardev/Flowpay?style=social) ![Forks](https://img.shields.io/github/forks/PankajKumardev/Flowpay?style=social) ![Issues](https://img.shields.io/github/issues/PankajKumardev/Flowpay) ![License](https://img.shields.io/github/license/PankajKumardev/Flowpay)
 
