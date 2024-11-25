@@ -168,14 +168,4 @@ We appreciate your support! 🌟🍴
 
 [![Stargazers](https://img.shields.io/github/stars/PankajKumardev/Flowpay)](https://github.com/PankajKumardev/Flowpay/stargazers) [![Forks](https://img.shields.io/github/forks/PankajKumardev/Flowpay)](https://github.com/PankajKumardev/Flowpay/network/members)
 
-## Forkers ❤️
-
-[![Forkers repo roster for @PankajKumardev/Flowpay](https://reporoster.com/forks/dark/PankajKumardev/Flowpay)](https://github.com/PankajKumardev/Flowpay/network/members)
-
----
-
-## Stargazers ⭐
-
-[![Stargazers repo roster for @PankajKumardev/Flowpay](https://reporoster.com/stars/dark/PankajKumardev/Flowpay)](https://github.com/PankajKumardev/Flowpay/stargazers)
-
 
