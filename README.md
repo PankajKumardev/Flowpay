@@ -1,81 +1,171 @@
-# Turborepo starter
+# FlowPay
 
-This is an official starter Turborepo.
+![FlowPay](https://img.shields.io/github/stars/PankajKumardev/Flowpay?style=social) ![Forks](https://img.shields.io/github/forks/PankajKumardev/Flowpay?style=social) ![Issues](https://img.shields.io/github/issues/PankajKumardev/Flowpay) ![License](https://img.shields.io/github/license/PankajKumardev/Flowpay)
 
-## Using this example
+## 🌟 Overview
+FlowPay is a cutting-edge peer-to-peer (P2P) payment and wallet management system, designed for effortless fund transfers and wallet functionalities. With a user-friendly interface and robust backend, FlowPay aims to simplify digital transactions for everyone.
 
-Run the following command:
+---
 
-```sh
-npx create-turbo@latest
+## 🚀 Features
+### 🏦 Wallet Management
+- **Seamless Fund Transfers:** Add funds via simulated HDFC and Axis bank pages.
+- **Transaction Tracking:** Monitor all wallet and P2P transactions, including success, failure, and pending statuses.
+- **Secure Transactions:** Supports transfers up to ₹10,000 per transaction.
+
+### 💰 Transfer Page
+- View **unlocked, locked, and total balance** at a glance.
+- Quick access to **recent transactions** for easy tracking.
+
+### 🏠 Home Page (Dashboard)
+- Overview of available balance.
+- One-click options for **sending money**, **adding funds**, and **viewing insights**.
+
+### 🔐 Authentication & Security
+- **Secure Login/Signup:** Powered by NextAuth and JWT.
+- **Data Validation:** Ensured with Zod.
+
+### 🎨 Frontend
+- Built with **Next.js** and **TailwindCSS** for responsive design.
+- Dynamic hero animations using **Framer Motion**.
+
+### 🛠 Backend
+- **Robust API Features:** Add funds and handle wallet operations using Next.js API.
+- Database managed via **Prisma ORM** and **PostgreSQL** (NeonDB).
+- Future integration for **webhooks** using Express.
+
+### 🌐 Deployment
+- Initial deployment with **Docker** on AWS EC2.
+- **Production-ready deployment** on Vercel.
+
+---
+
+## 💻 Tech Stack
+| **Category**        | **Technology**               |
+|---------------------|------------------------------|
+| Frontend            | Next.js, TailwindCSS, Framer Motion |
+| Backend             | Next.js API, Express (future) |
+| Database            | PostgreSQL, Prisma ORM        |
+| State Management    | Recoil                       |
+| Tools               | Turborepo, TypeScript, Docker |
+| Authentication      | NextAuth (JWT sessions)      |
+| Deployment          | AWS EC2, Vercel             |
+
+---
+
+## 📥 Installation Process
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/PankajKumardev/Flowpay.git
+   cd Flowpay
+   ```
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
+3. **Set up environment variables:**
+   - Copy `.env.example` to `.env`.
+   - Fill in required fields (`JWT_SECRET`, `NEXTAUTH_URL`, `DATABASE_URL`).
+4. **Initialize the database:**
+   ```bash
+   npm run db:migrate
+   npm run db:generate
+   ```
+5. **Start the development server:**
+   ```bash
+   npm run dev
+   ```
+6. **Build for production:**
+   ```bash
+   npm run build
+   ```
+
+---
+
+## 🤝 Contribution Guidelines
+### 🌱 How to Get Involved
+We warmly welcome contributions to FlowPay! Here's how you can get started:
+
+1. **Fork the repository** by clicking the "Fork" button.
+2. **Clone your fork:**
+   ```bash
+   git clone https://github.com/<your-username>/Flowpay.git
+   ```
+3. **Create a new branch:**
+   ```bash
+   git checkout -b feature/<feature-name>
+   ```
+4. **Set up the environment** (refer to installation steps).
+5. **Make changes** following coding standards.
+6. **Commit your changes:**
+   ```bash
+   git add .
+   git commit -m "Your descriptive commit message"
+   ```
+7. **Push changes:**
+   ```bash
+   git push origin <your-branch-name>
+   ```
+8. **Open a pull request** with a clear description of changes.
+
+### 📌 Suggested Contributions
+- **Enhancements:** Improve state management, Docker configuration, and UI/UX.
+- **Features:** Develop merchant app, add webhooks, and enhance FAQs.
+- **Bug Fixes:** Address open issues.
+
+### 🏅 Contributor Badges
+Showcase your contribution with pride! 🏆
+[![Contributors](https://img.shields.io/github/contributors/PankajKumardev/Flowpay)](https://github.com/PankajKumardev/Flowpay/graphs/contributors)
+
+---
+
+## 🌟 Motivation & Entrepreneurship
+FlowPay was created to make digital finance seamless and accessible to everyone. Our vision is to empower individuals and businesses with innovative tools to simplify financial interactions. We believe in building an inclusive community where contributors and users thrive together. 🚀
+
+---
+
+## 🗂 Repository Structure
+```
+├── README.md
+├── apps
+│   ├── Bank-WebHook
+│   ├── merchant-app
+│   └── user-app
+├── docker
+│   └── Dockerfile.user
+├── packages
+│   ├── db
+│   ├── eslint-config
+│   ├── store
+│   ├── typescript-config
+│   └── ui
+├── tsconfig.json
+└── turbo.json
 ```
 
-## What's inside?
+---
 
-This Turborepo includes the following packages/apps:
+## 🛡 License
+FlowPay is available under the MIT License. Feel free to use and modify the code responsibly.
 
-### Apps and Packages
+---
 
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
-- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
+## 📖 Changelog
+Refer to [`CHANGELOG.md`](https://github.com/PankajKumardev/Flowpay/blob/main/CHANGELOG.md) for version history and updates.
 
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
+---
 
-### Utilities
+## 📬 Contact
+For queries or collaborations:
+- Email: [pankajams1234@gmail.com](mailto:pankajams1234@gmail.com)
+- LinkedIn: [Pankaj Kumar](https://www.linkedin.com/in/pankajkumardev0/)
+- Twitter: [@pankajkumar_dev](https://x.com/pankajkumar_dev)
 
-This Turborepo has some additional tools already setup for you:
+---
 
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
+## 🌟 Stargazers & Forkers
+We appreciate your support! 🌟🍴
 
-### Build
+[![Stargazers](https://img.shields.io/github/stars/PankajKumardev/Flowpay)](https://github.com/PankajKumardev/Flowpay/stargazers) [![Forks](https://img.shields.io/github/forks/PankajKumardev/Flowpay)](https://github.com/PankajKumardev/Flowpay/network/members)
 
-To build all apps and packages, run the following command:
 
-```
-cd my-turborepo
-pnpm build
-```
-
-### Develop
-
-To develop all apps and packages, run the following command:
-
-```
-cd my-turborepo
-pnpm dev
-```
-
-### Remote Caching
-
-Turborepo can use a technique known as [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
-
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup), then enter the following commands:
-
-```
-cd my-turborepo
-npx turbo login
-```
-
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
-
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
-
-```
-npx turbo link
-```
-
-## Useful Links
-
-Learn more about the power of Turborepo:
-
-- [Tasks](https://turbo.build/repo/docs/core-concepts/monorepos/running-tasks)
-- [Caching](https://turbo.build/repo/docs/core-concepts/caching)
-- [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching)
-- [Filtering](https://turbo.build/repo/docs/core-concepts/monorepos/filtering)
-- [Configuration Options](https://turbo.build/repo/docs/reference/configuration)
-- [CLI Usage](https://turbo.build/repo/docs/reference/command-line-reference)
