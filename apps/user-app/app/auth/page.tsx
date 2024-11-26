@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { toast } from "react-toastify";
-import { ArrowRight, Smartphone, Lock, Info } from "lucide-react";
+import { ArrowRight, Smartphone, Lock, Info } from 'lucide-react';
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 
@@ -83,14 +83,9 @@ export default function LoginSignup() {
             </div>
           </div>
           {error && <p className="text-red-500 text-sm">{error}</p>}
-
-          <div className="bg-blue-50 border border-blue-200 rounded-md p-3 flex items-start space-x-3">
-            <Info className="text-blue-500 w-5 h-5 mt-0.5 flex-shrink-0" />
-            <p className="text-sm text-blue-600">
-              Demo credentials: <br />
-              Phone: 123456 <br />
-              Password: 123456
-            </p>
+          <div className="flex items-center space-x-2 text-sm text-gray-500">
+            <Info className="w-4 h-4" />
+            <p>Demo : Phone: 123456, Password: 123456</p>
           </div>
           <button
             type="submit"
@@ -115,4 +110,4 @@ export default function LoginSignup() {
     </div>
   );
 }
-  
+
