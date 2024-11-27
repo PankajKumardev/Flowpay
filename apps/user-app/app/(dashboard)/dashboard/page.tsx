@@ -4,12 +4,12 @@ import prisma from "@repo/db/client";
 import { authOptions } from "../../lib/auth";
 import { OnRampTransaction } from "../../../components/OnRampTransaction";
 
-import { Metadata } from 'next'
+import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: 'Dashboard | Flowpay',
-  description: 'Dashboard for Flowpay digital wallet application',
-}
+  title: "Dashboard | Flowpay",
+  description: "Dashboard for Flowpay digital wallet application",
+};
 
 import {
   Wallet,
@@ -169,9 +169,12 @@ export default async function DashboardPage() {
             Our support team is always ready to assist you with any questions or
             issues.
           </p>
-          <button className="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition-colors">
+          <a
+            href="/contact"
+            className="bg-indigo-600 text-white px-4 py-3 rounded-lg mt-1 hover:bg-indigo-700 transition-colors"
+          >
             Contact Support
-          </button>
+          </a>
         </div>
       </div>
     </div>

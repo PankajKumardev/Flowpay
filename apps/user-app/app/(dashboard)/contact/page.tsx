@@ -37,7 +37,7 @@ export default function ContactUsPage() {
                 <Phone className="mr-2 h-5 w-5 text-blue-600" />
                 Phone Support
               </h3>
-              <p className="text-gray-600 mb-2">24/7 Cus    tomer Service</p>
+              <p className="text-gray-600 mb-2">24/7 Customer Service</p>
               <a
                 href="tel:+1234567890"
                 className="text-blue-600 font-medium hover:text-blue-800"
@@ -56,7 +56,7 @@ export default function ContactUsPage() {
                 Get a response within 24 hours
               </p>
               <a
-                href="mailto:support@flowpay.com"
+                href="mailto:support@pankajams1234@gmail.com"
                 className="text-blue-600 font-medium hover:text-blue-800"
               >
                 support@flowpay.com
