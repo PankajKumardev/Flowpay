@@ -7,8 +7,8 @@ export const metadata: Metadata = {
 
 export default function PrivacyPolicyPage() {
   return (
-    <div className="min-h-screen bg-white py-12 px-4 sm:px-6 lg:px-8 mt-20">
-      <div className="max-w-3xl mx-auto">
+    <div className="min-h-screen bg-slate-100 py-12 px-4 sm:px-6 lg:px-8 ">
+      <div className="max-w-3xl mx-auto pt-20">
         <div className="text-center mb-12">
           <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-800">
             <span className="text-blue-600">FlowPay </span>Privacy Policy
