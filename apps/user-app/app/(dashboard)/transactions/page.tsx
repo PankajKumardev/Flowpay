@@ -2,6 +2,12 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "../../lib/auth";
 import prisma from "@repo/db/client";
 import { OnRampTransaction } from "../../../components/OnRampTransaction";
+import { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Transactions | Flowpay',
+  description: 'Track all your transactions effortlessly with Flowpay digital wallet application',
+}
 
 async function getsentP2PTranscations() {
   const session = await getServerSession(authOptions);

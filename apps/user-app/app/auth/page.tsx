@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { toast } from "react-toastify";
-import { ArrowRight, Smartphone, Lock, Info } from 'lucide-react';
+import { ArrowRight, Smartphone, Lock, Info } from "lucide-react";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 
@@ -110,4 +110,3 @@ export default function LoginSignup() {
     </div>
   );
 }
-

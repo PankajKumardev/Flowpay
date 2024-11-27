@@ -4,6 +4,12 @@ import { AddMoney } from "../../../components/AddMoneyCard";
 import { authOptions } from "../../lib/auth";
 import { BalanceCard } from "../../../components/BalanceCard";
 import { OnRampTransaction } from "../../../components/OnRampTransaction";
+import { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Transfer | Flowpay',
+  description: 'Transfer funds seamlessly with Flowpay digital wallet application',
+}
 
 async function getBalance() {
   const session = await getServerSession(authOptions);

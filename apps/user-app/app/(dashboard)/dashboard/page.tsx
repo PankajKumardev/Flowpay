@@ -3,6 +3,14 @@ import { getServerSession } from "next-auth";
 import prisma from "@repo/db/client";
 import { authOptions } from "../../lib/auth";
 import { OnRampTransaction } from "../../../components/OnRampTransaction";
+
+import { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Dashboard | Flowpay',
+  description: 'Dashboard for Flowpay digital wallet application',
+}
+
 import {
   Wallet,
   TrendingUp,
