@@ -3,7 +3,7 @@
 
 ![flowpay](https://github.com/user-attachments/assets/afa4d917-9912-4c6b-b995-785d8260abef)
 
-wPay](https://img.shields.io/github/stars/PankajKumardev/Flowpay?style=social) ![Forks](https://img.shields.io/github/forks/PankajKumardev/Flowpay?style=social) ![Issues](https://img.shields.io/github/issues/PankajKumardev/Flowpay) ![License](https://img.shields.io/github/license/PankajKumardev/Flowpay)
+![FlowPay](https://img.shields.io/github/stars/PankajKumardev/Flowpay?style=social) ![Forks](https://img.shields.io/github/forks/PankajKumardev/Flowpay?style=social) ![Issues](https://img.shields.io/github/issues/PankajKumardev/Flowpay) ![License](https://img.shields.io/github/license/PankajKumardev/Flowpay)
 
 ## 🌟 Overview
 FlowPay is a cutting-edge peer-to-peer (P2P) payment and wallet management system, designed for effortless fund transfers and wallet functionalities. With a user-friendly interface and robust backend, FlowPay aims to simplify digital transactions for everyone.
