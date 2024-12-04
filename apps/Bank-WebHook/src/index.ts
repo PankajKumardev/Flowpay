@@ -11,7 +11,6 @@ const TranscationSchema = z.object({
   amount: z.number(),
   token: z.string(),
 });
-
 // ** Function to handle pending transactions on server startup **
 async function processPendingTransactions() {
   try {
