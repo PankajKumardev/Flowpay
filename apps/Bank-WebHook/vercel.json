@@ -1,13 +1,14 @@
 {
   "builds": [
     {
-      "src": "packages/db/**/*",
-      "use": "@vercel/node"
-    },
-    {
-      "src": "apps/*/**/*",
-      "use": "@vercel/node"
+      "src": "apps/bank-webhook/src/index.ts",
+      "use": "@vercel/node",
+      "config": {
+        "includeFiles": ["packages/db/**"]
+      }
     }
   ],
-  "outputDirectory": "dist"
+  "routes": [
+    { "src": "/.*", "dest": "apps/bank-webhook/dist/index.js" }
+  ]
 }
