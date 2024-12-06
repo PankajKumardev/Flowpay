@@ -1,8 +1,8 @@
-import { Metadata } from "next";
+import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: "Privacy Policy | Flowpay",
-  description: "Privacy Policy for Flowpay digital wallet application",
+  title: 'Privacy Policy | Flowpay',
+  description: 'Privacy Policy for Flowpay digital wallet application',
 };
 
 export default function PrivacyPolicyPage() {
