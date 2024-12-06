@@ -1,8 +1,8 @@
 {
-  "extends" : "@repo/typescript-config/base.json",
+  "extends": "@repo/typescript-config/base.json",  // Inherits from the shared TypeScript config.
   "compilerOptions": {
-    "outDir": "./dist"
+    "outDir": "./dist"  // Specifies the output directory for compiled files.
   },
-  "include": ["src"],
-  "exclude": ["node_modules, dist"]
+  "include": ["src"],  // Includes source files from the `src` folder.
+  "exclude": ["node_modules", "dist"]  // Excludes unnecessary folders like `node_modules` and `dist`.
 }
