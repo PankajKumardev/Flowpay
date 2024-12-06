@@ -1,16 +1,13 @@
 {
-    "version": 2,
-    "builds": [
-      {
-        "src": "src/index.ts",
-        "use": "@vercel/node"
-      }
-    ],
-    "routes": [
-      {
-        "src": "/(.*)",
-        "dest": "/dist/index.js"
-      }
-    ]
-  }
-  
+  "builds": [
+    {
+      "src": "packages/db/**/*",
+      "use": "@vercel/node"
+    },
+    {
+      "src": "apps/*/**/*",
+      "use": "@vercel/node"
+    }
+  ],
+  "outputDirectory": "dist"
+}

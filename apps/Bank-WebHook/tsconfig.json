@@ -1,8 +1,11 @@
 {
-  "extends": "@repo/typescript-config/base.json",  // Inherits from the shared TypeScript config.
+  "extends": "../../packages/typescript-config/base.json",
   "compilerOptions": {
-    "outDir": "./dist"  // Specifies the output directory for compiled files.
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "moduleResolution": "NodeNext",
+    "module": "NodeNext"
   },
-  "include": ["src"],  // Includes source files from the `src` folder.
-  "exclude": ["node_modules", "dist"]  // Excludes unnecessary folders like `node_modules` and `dist`.
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist"]
 }
