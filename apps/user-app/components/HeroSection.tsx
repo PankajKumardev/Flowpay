@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import React from "react";
-import Link from "next/link";
-import { motion } from "framer-motion";
+import React from 'react';
+import Link from 'next/link';
+import { motion } from 'framer-motion';
 import {
   ArrowRight,
   CreditCard,
@@ -15,7 +15,7 @@ import {
   BarChart2,
   Lock,
   RefreshCw,
-} from "lucide-react";
+} from 'lucide-react';
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -119,7 +119,7 @@ export function HeroSection() {
         >
           <motion.div variants={itemVariants} className="space-y-6">
             <h1 className="text-5xl font-extrabold tracking-tight text-gray-900 sm:text-6xl md:text-7xl">
-              Simplify Your Finances with{" "}
+              Simplify Your Finances with{' '}
               <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
                 FlowPay
               </span>
