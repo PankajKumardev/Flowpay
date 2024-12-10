@@ -1,4 +1,5 @@
 'use client';
+
 import { useState } from 'react';
 import { Card } from '@repo/ui/card';
 
@@ -18,7 +19,7 @@ export const OnRampTransaction = ({
   const isSentTransactions = title === 'Sent transactions';
 
   const displayedTransactions = showAll
-    ? transactions
+    ? transactions.slice().reverse()
     : transactions.slice(-5).reverse();
 
   if (!transactions.length) {
@@ -47,12 +48,12 @@ export const OnRampTransaction = ({
                 </div>
               </div>
               <div className="flex flex-col items-end">
-                <div className="text-sm w-full pr-1">
+                <div className="text-sm w-full pr-4">
                   {isSentTransactions
                     ? `- Rs ${t.amount / 100}`
                     : `+ Rs ${t.amount / 100}`}
                 </div>
-                <div className="text-sm">
+                <div className="text-sm pr-4">
                   {t.status === 'Completed' ? (
                     <span className="text-green-500">Success</span>
                   ) : t.status === 'Pending' ? (
