@@ -48,12 +48,12 @@ export const OnRampTransaction = ({
                 </div>
               </div>
               <div className="flex flex-col items-end">
-                <div className="text-sm w-full pr-4">
+                <div className="text-sm w-full ">
                   {isSentTransactions
                     ? `- Rs ${t.amount / 100}`
                     : `+ Rs ${t.amount / 100}`}
                 </div>
-                <div className="text-sm pr-4">
+                <div className="text-sm ">
                   {t.status === 'Completed' ? (
                     <span className="text-green-500">Success</span>
                   ) : t.status === 'Pending' ? (
