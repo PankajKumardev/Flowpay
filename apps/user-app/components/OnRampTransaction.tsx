@@ -1,8 +1,10 @@
-import { Card } from "@repo/ui/card";
+'use client';
+import { useState } from 'react';
+import { Card } from '@repo/ui/card';
 
 export const OnRampTransaction = ({
   transactions,
-  title = "Recent Transactions",
+  title = 'Recent Transactions',
 }: {
   transactions: {
     time: Date;
@@ -12,7 +14,12 @@ export const OnRampTransaction = ({
   }[];
   title?: string;
 }) => {
-  const isSentTransactions = title === "Sent transactions";
+  const [showAll, setShowAll] = useState(false);
+  const isSentTransactions = title === 'Sent transactions';
+
+  const displayedTransactions = showAll
+    ? transactions
+    : transactions.slice(-5).reverse();
 
   if (!transactions.length) {
     return (
@@ -24,30 +31,31 @@ export const OnRampTransaction = ({
 
   return (
     <Card title={title}>
-      <div className="pt-2">
-        {transactions
-          .slice(-5)
-          .reverse()
-          .map((t, index) => (
-            <div key={index} className="flex justify-between items-center">
+      <div className="pt-2 ">
+        <div className="max-h-64 overflow-y-auto w-full ">
+          {displayedTransactions.map((t, index) => (
+            <div
+              key={index}
+              className="flex justify-between items-center mb-2 w-full "
+            >
               <div>
                 <div className="text-sm">
-                  {isSentTransactions ? "Sent INR" : "Received INR"}
+                  {isSentTransactions ? 'Sent INR' : 'Received INR'}
                 </div>
                 <div className="text-slate-600 text-xs">
                   {t.time.toDateString()}
                 </div>
               </div>
               <div className="flex flex-col items-end">
-                <div className="text-sm">
+                <div className="text-sm w-full pr-1">
                   {isSentTransactions
                     ? `- Rs ${t.amount / 100}`
                     : `+ Rs ${t.amount / 100}`}
                 </div>
                 <div className="text-sm">
-                  {t.status === "Completed" ? (
+                  {t.status === 'Completed' ? (
                     <span className="text-green-500">Success</span>
-                  ) : t.status === "Pending" ? (
+                  ) : t.status === 'Pending' ? (
                     <span className="text-yellow-500">Pending</span>
                   ) : (
                     <span className="text-red-500">Failed</span>
@@ -56,6 +64,15 @@ export const OnRampTransaction = ({
               </div>
             </div>
           ))}
+        </div>
+        {transactions.length > 5 && (
+          <button
+            className="mt-4 text-blue-500"
+            onClick={() => setShowAll(!showAll)}
+          >
+            {showAll ? 'Show Less' : 'Show All'}
+          </button>
+        )}
       </div>
     </Card>
   );
