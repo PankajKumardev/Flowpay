@@ -40,7 +40,7 @@ export const OnRampTransaction = ({
               className="flex justify-between items-center mb-2 w-full "
             >
               <div>
-                <div className="text-sm">
+                <div className={` ${showAll ? 'pr-1 text-sm' : 'text-sm'}`}>
                   {isSentTransactions ? 'Sent INR' : 'Received INR'}
                 </div>
                 <div className="text-slate-600 text-xs">
@@ -53,7 +53,7 @@ export const OnRampTransaction = ({
                     ? `- Rs ${t.amount / 100}`
                     : `+ Rs ${t.amount / 100}`}
                 </div>
-                <div className="text-sm ">
+                <div className="text-sm pr-1">
                   {t.status === 'Completed' ? (
                     <span className="text-green-500">Success</span>
                   ) : t.status === 'Pending' ? (
